@@ -7,8 +7,11 @@ RUN apt-get install -y zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 RUN echo 'grun() { \n\
-    g++ $1 -o executable \n\
+    basename="$(basename -- $1)" \n\
+    dirname="$(dirname -- $1)" \n\
+    filename="${basename%.*}" \n\
+    g++ $1 -o $dirname/$filename \n\
     if [[ $? = 0 ]]; then \n\
-        ./executable \n\
+        ./$dirname/$filename \n\
     fi \n\
 }' >> ~/.zshrc
