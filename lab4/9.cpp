@@ -1,6 +1,5 @@
 // Dados el mes y día de nacimiento indique al usuario cuál es su signo del zodiaco.
 #include <iostream>
-#include<limits>
 
 using namespace std;
 
@@ -36,8 +35,7 @@ int getMonth() {
     return month;
 }
 
-int main()
-{
+int main() {
     int day = getDay();
     int month = getMonth();
 
